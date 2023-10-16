@@ -23,7 +23,9 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text="Ważne, Pilne"
-            android:gravity="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal|top"
+            android:paddingTop="8dp"
             android:background="#FFCCCC"/>
 
         <TextView
@@ -33,7 +35,9 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text="Ważne, Niepilne"
-            android:gravity="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal|top"
+            android:paddingTop="8dp"
             android:background="#FFDDCC"/>
 
         <TextView
@@ -43,7 +47,9 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text="Nieważne, Pilne"
-            android:gravity="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal|top"
+            android:paddingTop="8dp"
             android:background="#FFEECC"/>
 
         <TextView
@@ -53,7 +59,9 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text="Nieważne, Niepilne"
-            android:gravity="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal|top"
+            android:paddingTop="8dp"
             android:background="#FFFFCC"/>
 
 
