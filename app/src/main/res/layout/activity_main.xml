@@ -11,59 +11,114 @@
         android:layout_height="0dp"
         android:columnCount="2"
         android:rowCount="2"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/addTaskButton"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/block1"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="Ważne, Pilne"
-            android:textStyle="bold"
-            android:gravity="center_horizontal|top"
-            android:paddingTop="8dp"
-            android:background="#FFCCCC"/>
+            android:layout_columnWeight="1"
+            android:background="#FFCCCC"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/block2"
+            <TextView
+                android:id="@+id/block0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:paddingTop="8dp"
+                android:text="Ważne, Pilne"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/zero"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="Ważne, Niepilne"
-            android:textStyle="bold"
-            android:gravity="center_horizontal|top"
-            android:paddingTop="8dp"
-            android:background="#FFDDCC"/>
+            android:layout_columnWeight="1"
+            android:background="#FFDDCC"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/block3"
+            <TextView
+                android:id="@+id/block1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:paddingTop="8dp"
+                android:text="Ważne, Niepilne"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/one"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="Nieważne, Pilne"
-            android:textStyle="bold"
-            android:gravity="center_horizontal|top"
-            android:paddingTop="8dp"
-            android:background="#FFEECC"/>
+            android:layout_columnWeight="1"
+            android:background="#FFEECC"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/block4"
+            <TextView
+                android:id="@+id/block2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:paddingTop="8dp"
+                android:text="Nieważne, Pilne"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/two"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="Nieważne, Niepilne"
-            android:textStyle="bold"
-            android:gravity="center_horizontal|top"
-            android:paddingTop="8dp"
-            android:background="#FFFFCC"/>
+            android:layout_columnWeight="1"
+            android:background="#FFFFCC"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/block3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:paddingTop="8dp"
+                android:text="Nieważne, Niepilne"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/three"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp" />
+
+        </LinearLayout>
 
     </GridLayout>
 
@@ -76,9 +131,9 @@
         android:drawableTop="@drawable/baseline_add_24"
         android:drawablePadding="-20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/settingsButton"
-        app:layout_constraintHorizontal_weight="1"/>
+        app:layout_constraintRight_toLeftOf="@+id/settingsButton" />
 
     <Button
         android:id="@+id/settingsButton"
@@ -89,9 +144,9 @@
         android:drawableTop="@drawable/baseline_settings_24"
         android:drawablePadding="-20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/addTaskButton"
-        app:layout_constraintRight_toLeftOf="@+id/completedTasksButton"
-        app:layout_constraintHorizontal_weight="1"/>
+        app:layout_constraintRight_toLeftOf="@+id/completedTasksButton" />
 
     <Button
         android:id="@+id/completedTasksButton"
@@ -102,9 +157,9 @@
         android:drawableTop="@drawable/baseline_assignment_turned_in_24"
         android:drawablePadding="-20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/settingsButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_weight="1"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
