@@ -26,6 +26,8 @@ class AddTaskActivity : AppCompatActivity() {
 
         setupPrioritySpinner()
 
+        binding.notificationTimePicker.setIs24HourView(true)
+
         binding.addTaskButton.setOnClickListener {
             val title = binding.titleEditText.text.toString()
             val description = binding.descriptionEditText.text.toString()
