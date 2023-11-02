@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.eisenhower.dao.TasksDao
 import com.example.eisenhower.model.Task
+import java.util.concurrent.Executors
 
 @Database(entities = [Task::class], version = 1)
 @TypeConverters(DateTypeConverter::class)
@@ -16,6 +17,8 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
+
+        val databaseWriteExecutor = Executors.newSingleThreadExecutor()
 
         fun getDatabase(context: Context): AppDatabase {
             val tempInstance = INSTANCE
