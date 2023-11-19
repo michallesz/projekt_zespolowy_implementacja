@@ -5,6 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.eisenhower.model.Task
 import com.example.eisenhower.repository.TaskRepository
+import androidx.lifecycle.Transformations
+
 
 
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
@@ -35,4 +37,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     fun update(task: Task) {
         mRepository.update(task)
     }
+    fun getTasksByPriority(priority: Int): LiveData<List<Task>> {
+        return Transformations.map(allUnfinishedTasks) { tasks ->
+            tasks.filter { it.priorytet == priority }
+        }
+    }
 }
+

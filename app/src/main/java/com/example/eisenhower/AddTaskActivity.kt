@@ -21,6 +21,7 @@ class AddTaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        title = "Dodaj/Edytuj Zadanie"
 
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
