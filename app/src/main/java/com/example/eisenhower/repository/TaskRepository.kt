@@ -15,8 +15,8 @@ class TaskRepository internal constructor(application: Application) {
     init {
         val elementRoomDatabase: AppDatabase = AppDatabase.getDatabase(application)
         mTaskDao = elementRoomDatabase.tasksDao()
-        mAllUnfinishedTasks = mTaskDao.getNieWykonaneZadania()
-        mAllFinishedTasks = mTaskDao.getWykonaneZadania()
+        mAllUnfinishedTasks = mTaskDao.getUndoneTasks()
+        mAllFinishedTasks = mTaskDao.getDoneTasks()
     }
 
     val allUnfinishedTasks: LiveData<List<Task>>

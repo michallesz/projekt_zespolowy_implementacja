@@ -6,25 +6,18 @@ import com.example.eisenhower.model.Task
 
 @Dao
 interface TasksDao {
-//bez sortowania
-    //@Query("SELECT * FROM zadania WHERE czyWykonane = 0")
-    //fun getNieWykonaneZadania(): LiveData<List<Task>>
+    @Query("SELECT * FROM tasks WHERE isDone = 0 ORDER BY date ASC")
+    fun getUndoneTasks(): LiveData<List<Task>>
 
-    //@Query("SELECT * FROM zadania WHERE czyWykonane = 1")
-    //fun getWykonaneZadania(): LiveData<List<Task>>
+    @Query("SELECT * FROM tasks WHERE isDone = 1 ORDER BY date ASC")
+    fun getDoneTasks(): LiveData<List<Task>>
 
-    @Query("SELECT * FROM zadania WHERE czyWykonane = 0 ORDER BY dataPowiadomienia ASC")
-    fun getNieWykonaneZadania(): LiveData<List<Task>>
-
-    @Query("SELECT * FROM zadania WHERE czyWykonane = 1 ORDER BY dataPowiadomienia ASC")
-    fun getWykonaneZadania(): LiveData<List<Task>>
-
-    @Insert
-    fun insert(zadanie: Task)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(task: Task)
 
     @Update
-    fun update(zadanie: Task)
+    fun update(task: Task)
 
     @Delete
-    fun delete(zadanie: Task)
+    fun delete(task: Task)
 }

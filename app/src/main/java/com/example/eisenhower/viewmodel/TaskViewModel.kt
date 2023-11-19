@@ -39,7 +39,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     }
     fun getTasksByPriority(priority: Int): LiveData<List<Task>> {
         return Transformations.map(allUnfinishedTasks) { tasks ->
-            tasks.filter { it.priorytet == priority }
+            tasks.filter { it.priority == priority }
         }
     }
 }

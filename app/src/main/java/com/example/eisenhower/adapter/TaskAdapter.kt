@@ -7,8 +7,10 @@ import android.text.style.BulletSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.eisenhower.AddTaskActivity
 import com.example.eisenhower.R
 import com.example.eisenhower.model.Task
 import java.text.SimpleDateFormat
@@ -52,8 +54,8 @@ class TaskAdapter(
         private val titleTextView: TextView = itemView.findViewById(R.id.taskTextView)
 
         fun bind(task: Task) {
-            val spannableString = SpannableString(task.tytul).apply {
-                setSpan(BulletSpan(15, Color.BLACK, 10), 0, task.tytul.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+            val spannableString = SpannableString(task.title).apply {
+                setSpan(BulletSpan(15, Color.BLACK, 10), 0, task.title.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
             }
 
             titleTextView.text = spannableString
@@ -66,11 +68,17 @@ class TaskAdapter(
             itemView.findViewById(R.id.taskDescriptionTextView)
         private val dateTextView: TextView = itemView.findViewById(R.id.taskDateTextView)
 
+        private val editIcon: ImageButton = itemView.findViewById(R.id.editTaskButton)
+
         fun bind(task: Task) {
-            titleTextView.text = task.tytul
-            descriptionTextView.text = task.opis
+            titleTextView.text = task.title
+            descriptionTextView.text = task.description
             val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
-            dateTextView.text = dateFormat.format(task.dataPowiadomienia)
+            dateTextView.text = dateFormat.format(task.date)
+
+            editIcon.setOnClickListener{
+                AddTaskActivity.startActivity(itemView.context,task)
+            }
         }
     }
 

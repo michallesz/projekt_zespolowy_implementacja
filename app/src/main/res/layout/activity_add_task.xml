@@ -41,5 +41,5 @@
         android:id="@+id/addTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dodaj zadanie" />
+        android:text="Zapisz" />
 </LinearLayout>

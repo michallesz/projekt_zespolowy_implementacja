@@ -2,7 +2,6 @@ package com.example.eisenhower
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -75,16 +74,16 @@ class MainActivity : AppCompatActivity() {
         block3List.layoutManager = LinearLayoutManager(this)
 
         taskViewModel.allUnfinishedTasks.observe(this) { unfinishedTasks ->
-            val zero = unfinishedTasks.filter { task -> task.priorytet == 0 }
+            val zero = unfinishedTasks.filter { task -> task.priority == 0 }
             block0ListAdapter.setTaskList(zero)
 
-            val one = unfinishedTasks.filter { task -> task.priorytet == 1 }
+            val one = unfinishedTasks.filter { task -> task.priority == 1 }
             block1ListAdapter.setTaskList(one)
 
-            val two = unfinishedTasks.filter { task -> task.priorytet == 2 }
+            val two = unfinishedTasks.filter { task -> task.priority == 2 }
             block2ListAdapter.setTaskList(two)
 
-            val three = unfinishedTasks.filter { task -> task.priorytet == 3 }
+            val three = unfinishedTasks.filter { task -> task.priority == 3 }
             block3ListAdapter.setTaskList(three)
         }
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,27 +19,24 @@ class TaskDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
         setContentView(R.layout.activity_task_details)
 
         taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
 
-        // powrot
-        findViewById<ImageButton>(R.id.backButton).setOnClickListener {
-            finish()
-        }
+        val toolbar:Toolbar = findViewById(R.id.taskToolbar)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val title = intent.getStringExtra("blockTitle") ?: "Blok nieznany"
         val color = intent.getStringExtra("color") ?: "#FFFFFF"
         val priority = intent.getIntExtra("priority", -1)
 
+        supportActionBar!!.title = title
+
         // tlo
         val constraintLayout: ConstraintLayout = findViewById(R.id.taskDetailsConstraintLayout)
         constraintLayout.setBackgroundColor(Color.parseColor(color))
-
-        // tytul
-        val titleTextView: TextView = findViewById(R.id.taskMatrixTitle)
-        titleTextView.text = title
 
         // konfiguracja RecyclerView z zadaniami
         val taskDetailsRecyclerView: RecyclerView = findViewById(R.id.taskDetailsRecyclerView)
