@@ -42,9 +42,7 @@ class TaskDetailsActivity : AppCompatActivity() {
 
         // konfiguracja RecyclerView z zadaniami
         val taskDetailsRecyclerView: RecyclerView = findViewById(R.id.taskDetailsRecyclerView)
-        val adapter = TaskAdapter({ task ->
-            // obsluzenie klikniecia
-        }, showDetails = true)
+        val adapter = TaskAdapter(showDetails = true)
         taskDetailsRecyclerView.adapter = adapter
         taskDetailsRecyclerView.layoutManager = LinearLayoutManager(this)
 
