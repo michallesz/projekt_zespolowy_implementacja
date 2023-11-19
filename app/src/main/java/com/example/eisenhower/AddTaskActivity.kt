@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.example.eisenhower.databinding.ActivityAddTaskBinding
 import com.example.eisenhower.model.Task
@@ -20,11 +21,15 @@ class AddTaskActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
+
+        val toolbar: Toolbar = findViewById(R.id.taskToolbar)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setupPrioritySpinner()
 
