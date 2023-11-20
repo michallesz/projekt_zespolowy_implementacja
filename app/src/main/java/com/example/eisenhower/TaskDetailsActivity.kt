@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eisenhower.adapter.TaskAdapter
+import com.example.eisenhower.adapter.TaskDetailsAdapter
 import com.example.eisenhower.viewmodel.TaskViewModel
 
 class TaskDetailsActivity : AppCompatActivity() {
     private lateinit var taskViewModel: TaskViewModel
-    private lateinit var adapter: TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +41,14 @@ class TaskDetailsActivity : AppCompatActivity() {
         recycler.setBackgroundColor(color)
 
         val taskDetailsRecyclerView: RecyclerView = findViewById(R.id.taskDetailsRecyclerView)
-        val adapter = TaskAdapter(showDetails = true)
+        val adapter = TaskDetailsAdapter(
+            onEditClick = {task ->
+                AddTaskActivity.startActivity(this, task)
+            }, onDoneClick = {task ->
+                val newTask = task.copy(isDone = true)
+                taskViewModel.update(newTask)
+            }
+        )
         taskDetailsRecyclerView.adapter = adapter
         taskDetailsRecyclerView.layoutManager = LinearLayoutManager(this)
 

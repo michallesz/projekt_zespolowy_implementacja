@@ -63,22 +63,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         block0List = findViewById(R.id.zero)
-        block0ListAdapter = TaskAdapter(showDetails = false)
+        block0ListAdapter = TaskAdapter()
         block0List.adapter = block0ListAdapter
         block0List.layoutManager = LinearLayoutManager(this)
 
         block1List = findViewById(R.id.one)
-        block1ListAdapter = TaskAdapter(showDetails = false)
+        block1ListAdapter = TaskAdapter()
         block1List.adapter = block1ListAdapter
         block1List.layoutManager = LinearLayoutManager(this)
 
         block2List = findViewById(R.id.two)
-        block2ListAdapter = TaskAdapter(showDetails = false)
+        block2ListAdapter = TaskAdapter()
         block2List.adapter = block2ListAdapter
         block2List.layoutManager = LinearLayoutManager(this)
 
         block3List = findViewById(R.id.three)
-        block3ListAdapter = TaskAdapter(showDetails = false)
+        block3ListAdapter = TaskAdapter()
         block3List.adapter = block3ListAdapter
         block3List.layoutManager = LinearLayoutManager(this)
 
