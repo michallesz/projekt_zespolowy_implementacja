@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -45,8 +46,15 @@ class TaskDetailsActivity : AppCompatActivity() {
             onEditClick = {task ->
                 AddTaskActivity.startActivity(this, task)
             }, onDoneClick = {task ->
-                val newTask = task.copy(isDone = true)
-                taskViewModel.update(newTask)
+                AlertDialog.Builder(this)
+                    .setTitle("Ukończenie zadania")
+                    .setMessage("Czy na pewno chcesz przenieść to zadanie do sekcji Wykonane?")
+                    .setPositiveButton("Tak") { dialog, which ->
+                        val newTask = task.copy(isDone = true)
+                        taskViewModel.update(newTask)
+                    }
+                    .setNegativeButton("Anuluj", null)
+                    .show()
             }
         )
         taskDetailsRecyclerView.adapter = adapter

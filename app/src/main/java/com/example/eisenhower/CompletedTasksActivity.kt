@@ -1,6 +1,7 @@
 package com.example.eisenhower
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
@@ -31,10 +32,24 @@ class CompletedTasksActivity : AppCompatActivity() {
 
         val adapter = CompletedTaskAdapter(
             onUndoneClick = {task ->
-                val newTask = task.copy(isDone = false)
-                taskViewModel.update(newTask)
+                AlertDialog.Builder(this)
+                    .setTitle("Przywrócenie zadania")
+                    .setMessage("Czy na pewno chcesz przywrócić to zadanie?")
+                    .setPositiveButton("Tak") { dialog, which ->
+                        val newTask = task.copy(isDone = false)
+                        taskViewModel.update(newTask)
+                    }
+                    .setNegativeButton("Anuluj", null)
+                    .show()
             }, onDeleteClick = {task ->
-                taskViewModel.delete(task)
+                AlertDialog.Builder(this)
+                    .setTitle("Usuwanie zadania")
+                    .setMessage("Czy na pewno chcesz usunąć to zadanie?")
+                    .setPositiveButton("Usuń") { dialog, which ->
+                        taskViewModel.delete(task)
+                    }
+                    .setNegativeButton("Anuluj", null)
+                    .show()
             }
         )
         recycler.adapter = adapter

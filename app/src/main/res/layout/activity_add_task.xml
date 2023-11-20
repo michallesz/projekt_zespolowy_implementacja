@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
-            app:title="Formularz zadania" />
+            app:title="Formularz zadania"
+            app:titleTextColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
