@@ -31,9 +31,10 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TitleViewHolder>() {
         private val titleTextView: TextView = itemView.findViewById(R.id.taskTextView)
 
         fun bind(task: Task) {
+            val blackAlpha = Color.argb(153, 0,0,0)
             val spannableString = SpannableString(task.title).apply {
                 setSpan(
-                    BulletSpan(15, Color.BLACK, 10),
+                    BulletSpan(15, blackAlpha, 10),
                     0,
                     task.title.length,
                     Spanned.SPAN_INCLUSIVE_EXCLUSIVE

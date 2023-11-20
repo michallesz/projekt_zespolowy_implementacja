@@ -46,7 +46,8 @@
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@+id/taskDateTextView"
         app:layout_constraintEnd_toStartOf="@+id/doneTaskButton"
-        app:layout_constraintTop_toTopOf="@+id/taskDateTextView" />
+        app:layout_constraintTop_toTopOf="@+id/taskDateTextView"
+        android:alpha="0.6"/>
 
     <ImageButton
         android:id="@+id/doneTaskButton"
@@ -56,13 +57,15 @@
         android:src="@drawable/ic_done"
         app:layout_constraintBottom_toBottomOf="@+id/editTaskButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTaskButton" />
+        app:layout_constraintTop_toTopOf="@+id/editTaskButton"
+        android:alpha="0.6"/>
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FF000000"
+        android:background="@color/black"
+        android:alpha="0.6"
         app:layout_constraintBottom_toBottomOf="@+id/editTaskButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

@@ -20,9 +20,9 @@
         app:layout_constraintTop_toBottomOf="@+id/taskToolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="250dp"
         android:columnCount="2"
         android:rowCount="2"
         android:padding="16dp">
@@ -48,7 +48,7 @@
                 android:layout_gravity="center_horizontal|top"
                 android:paddingTop="8dp"
                 android:text="Ważne, Pilne"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -82,7 +82,7 @@
                 android:layout_gravity="center_horizontal|top"
                 android:paddingTop="8dp"
                 android:text="Ważne, Niepilne"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -116,7 +116,7 @@
                 android:layout_gravity="center_horizontal|top"
                 android:paddingTop="8dp"
                 android:text="Nieważne, Pilne"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -150,7 +150,7 @@
                 android:layout_gravity="center_horizontal|top"
                 android:paddingTop="8dp"
                 android:text="Nieważne, Niepilne"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageButton

@@ -2,17 +2,13 @@ package com.example.eisenhower
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eisenhower.adapter.TaskAdapter
 import com.example.eisenhower.databinding.ActivityMainBinding
-import com.example.eisenhower.databinding.ActivitySettingsBinding
 import com.example.eisenhower.viewmodel.BlockViewModel
 import com.example.eisenhower.viewmodel.TaskViewModel
 

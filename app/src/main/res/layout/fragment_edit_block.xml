@@ -16,6 +16,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color1"
+        app:borderWidth="0dp"
         android:tag="#FFCCCC"
         android:backgroundTint="#FFCCCC"
         android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
         tools:ignore="MissingConstraints"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color2"
+        app:borderWidth="0dp"
         android:tag="#FFDDCC"
         android:backgroundTint="#FFDDCC"
         android:layout_width="wrap_content"
@@ -30,6 +32,7 @@
         tools:ignore="MissingConstraints"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color3"
+        app:borderWidth="0dp"
         android:tag="#FFEECC"
         android:backgroundTint="#FFEECC"
         android:layout_width="wrap_content"
@@ -37,6 +40,7 @@
         tools:ignore="MissingConstraints"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color4"
+        app:borderWidth="0dp"
         android:tag="#FFFFCC"
         android:backgroundTint="#FFFFCC"
         android:layout_width="wrap_content"
@@ -44,21 +48,33 @@
         tools:ignore="MissingConstraints"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color5"
+        app:borderWidth="0dp"
+        android:tag="#CAFFBF"
+        android:backgroundTint="#CAFFBF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color6"
+        app:borderWidth="0dp"
+        android:tag="#9BF6FF"
+        android:backgroundTint="#9BF6FF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color7"
+        app:borderWidth="0dp"
+        android:tag="#A0C4FF"
+        android:backgroundTint="#A0C4FF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/color8"
+        app:borderWidth="0dp"
+        android:tag="#BDB2FF"
+        android:backgroundTint="#BDB2FF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
