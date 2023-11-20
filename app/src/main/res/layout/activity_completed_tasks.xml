@@ -17,7 +17,7 @@
         app:title="Wykonane zadania" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taskDetailsRecyclerView"
+        android:id="@+id/taskCompletedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
