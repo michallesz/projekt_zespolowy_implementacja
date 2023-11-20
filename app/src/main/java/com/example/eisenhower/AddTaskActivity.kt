@@ -10,12 +10,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.example.eisenhower.databinding.ActivityAddTaskBinding
 import com.example.eisenhower.model.Task
+import com.example.eisenhower.viewmodel.BlockViewModel
 import com.example.eisenhower.viewmodel.TaskViewModel
 import java.util.Calendar
 
 class AddTaskActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTaskBinding
     private lateinit var taskViewModel: TaskViewModel
+    private lateinit var blockViewModel: BlockViewModel
 
     private var id: Int? = null
 
@@ -25,13 +27,12 @@ class AddTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
+        blockViewModel = ViewModelProvider(this)[BlockViewModel::class.java]
 
         val toolbar: Toolbar = findViewById(R.id.taskToolbar)
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        setupPrioritySpinner()
 
         binding.notificationTimePicker.setIs24HourView(true)
 
@@ -84,18 +85,24 @@ class AddTaskActivity : AppCompatActivity() {
                 Toast.makeText(this, "Wypełnij wszystkie pola.", Toast.LENGTH_SHORT).show()
             }
         }
+        blockViewModel.allBlocks.observe(this) { blocks ->
+            val block0 = blocks.find { it.priority == 0 }!!
+            val block1 = blocks.find { it.priority == 1 }!!
+            val block2 = blocks.find { it.priority == 2 }!!
+            val block3 = blocks.find { it.priority == 3 }!!
+
+            val priorities = arrayOf(block0.title, block1.title, block2.title, block3.title)
+            setupPrioritySpinner(priorities)
+        }
     }
 
-    private fun setupPrioritySpinner() {
+    private fun setupPrioritySpinner(priorities: Array<String>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, priorities)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.prioritySpinner.adapter = adapter
     }
 
     companion object {
-        private val priorities =
-            arrayOf("Ważne, Pilne", "Ważne, Niepilne", "Nieważne, Pilne", "Nieważne, Niepilne")
-
         private const val ID_KEY = "id"
         private const val PRIORITY_KEY = "priority"
         private const val TITLE_KEY = "title"

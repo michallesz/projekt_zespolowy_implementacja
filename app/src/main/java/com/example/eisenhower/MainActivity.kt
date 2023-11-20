@@ -11,10 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eisenhower.adapter.TaskAdapter
+import com.example.eisenhower.databinding.ActivityMainBinding
+import com.example.eisenhower.databinding.ActivitySettingsBinding
+import com.example.eisenhower.viewmodel.BlockViewModel
 import com.example.eisenhower.viewmodel.TaskViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var taskViewModel: TaskViewModel
+    private lateinit var blockViewModel: BlockViewModel
 
     private lateinit var block0List: RecyclerView
     private lateinit var block0ListAdapter: TaskAdapter
@@ -28,12 +32,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var block3List: RecyclerView
     private lateinit var block3ListAdapter: TaskAdapter
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
+        blockViewModel = ViewModelProvider(this)[BlockViewModel::class.java]
 
         val addButton: ImageButton = findViewById(R.id.addTaskButton)
         addButton.setOnClickListener {
@@ -87,48 +96,39 @@ class MainActivity : AppCompatActivity() {
             block3ListAdapter.setTaskList(three)
         }
 
-        //blok0
-        val block0: LinearLayout = findViewById(R.id.area0)
-        block0.setOnClickListener {
-            startTaskDetailsActivity("Ważne, Pilne", 0, "#FFCCCC")
-        }
-        val block00: FrameLayout = findViewById(R.id.zeroLayout)
-        block00.setOnClickListener {
-            startTaskDetailsActivity("Ważne, Pilne", 0, "#FFCCCC")
-        }
+        blockViewModel.allBlocks.observe(this) { blocks ->
+            val block0 = blocks.find { it.priority == 0 }!!
+            val block1 = blocks.find { it.priority == 1 }!!
+            val block2 = blocks.find { it.priority == 2 }!!
+            val block3 = blocks.find { it.priority == 3 }!!
 
-        //blok1
-        val block1: TextView = findViewById(R.id.block1)
-        block1.setOnClickListener {
-            startTaskDetailsActivity("Ważne, Niepilne", 1, "#FFDDCC")
-        }
-        val block11: FrameLayout = findViewById(R.id.oneLayout)
-        block11.setOnClickListener {
-            startTaskDetailsActivity("Ważne, Niepilne", 1, "#FFDDCC")
-        }
+            binding.block0.text = block0.title
+            binding.area0.setBackgroundColor(block0.color)
+            binding.block0.setOnClickListener {
+                startTaskDetailsActivity(block0.title, block0.priority, block0.color)
+            }
 
-        //blok2
-        val block2: TextView = findViewById(R.id.block2)
-        block2.setOnClickListener {
-            startTaskDetailsActivity("Nieważne, Pilne", 2, "#FFEECC")
-        }
-        val block22: FrameLayout = findViewById(R.id.twoLayout)
-        block22.setOnClickListener {
-            startTaskDetailsActivity("Nieważne, Pilne", 2, "#FFEECC")
-        }
+            binding.block1.text = block1.title
+            binding.area1.setBackgroundColor(block1.color)
+            binding.block1.setOnClickListener {
+                startTaskDetailsActivity(block1.title, block1.priority, block1.color)
+            }
 
-        //blok3
-        val block3: TextView = findViewById(R.id.block3)
-        block3.setOnClickListener {
-            startTaskDetailsActivity("Nieważne, Niepilne", 3, "#FFFFCC")
-        }
-        val block33: FrameLayout = findViewById(R.id.threeLayout)
-        block33.setOnClickListener {
-            startTaskDetailsActivity("Nieważne, Niepilne", 3, "#FFFFCC")
+            binding.block2.text = block2.title
+            binding.area2.setBackgroundColor(block2.color)
+            binding.block2.setOnClickListener {
+                startTaskDetailsActivity(block2.title, block2.priority, block2.color)
+            }
+
+            binding.block3.text = block3.title
+            binding.area3.setBackgroundColor(block3.color)
+            binding.block3.setOnClickListener {
+                startTaskDetailsActivity(block3.title, block3.priority, block3.color)
+            }
         }
     }
 
-    private fun startTaskDetailsActivity(title: String, priority: Int, color: String) {
+    private fun startTaskDetailsActivity(title: String, priority: Int, color: Int) {
         val intent = Intent(this, TaskDetailsActivity::class.java).apply {
             putExtra("blockTitle", title)
             putExtra("priority", priority)

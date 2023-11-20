@@ -29,22 +29,22 @@ class TaskDetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val title = intent.getStringExtra("blockTitle") ?: "Blok nieznany"
-        val color = intent.getStringExtra("color") ?: "#FFFFFF"
+        val color = intent.getIntExtra("color", 0)
         val priority = intent.getIntExtra("priority", -1)
 
         supportActionBar!!.title = title
 
-        // tlo
-        val constraintLayout: ConstraintLayout = findViewById(R.id.taskDetailsConstraintLayout)
-        constraintLayout.setBackgroundColor(Color.parseColor(color))
+        val toolBar: Toolbar = findViewById(R.id.taskToolbar)
+        val recycler: RecyclerView = findViewById(R.id.taskDetailsRecyclerView)
 
-        // konfiguracja RecyclerView z zadaniami
+        toolBar.setBackgroundColor(color)
+        recycler.setBackgroundColor(color)
+
         val taskDetailsRecyclerView: RecyclerView = findViewById(R.id.taskDetailsRecyclerView)
         val adapter = TaskAdapter(showDetails = true)
         taskDetailsRecyclerView.adapter = adapter
         taskDetailsRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // pobranie i wyswietlenie zadan o odpowiednim priorytecie
         taskViewModel.getTasksByPriority(priority).observe(this) { tasks ->
             adapter.setTaskList(tasks)
         }

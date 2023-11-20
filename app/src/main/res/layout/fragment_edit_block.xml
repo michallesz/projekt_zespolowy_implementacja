@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tytuł"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color1"
+        android:tag="#FFCCCC"
+        android:backgroundTint="#FFCCCC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color2"
+        android:tag="#FFDDCC"
+        android:backgroundTint="#FFDDCC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color3"
+        android:tag="#FFEECC"
+        android:backgroundTint="#FFEECC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color4"
+        android:tag="#FFFFCC"
+        android:backgroundTint="#FFFFCC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/color8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/colors"
+        app:flow_wrapMode="aligned"
+        app:flow_verticalGap="8dp"
+        app:flow_horizontalGap="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleEditText"
+        app:constraint_referenced_ids="color1,color2,color3,color4,color5, color6, color7, color8"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_margin="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colors"
+        android:text="Zapisz" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
