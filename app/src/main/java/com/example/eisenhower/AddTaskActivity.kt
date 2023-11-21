@@ -100,6 +100,11 @@ class AddTaskActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, priorities)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.prioritySpinner.adapter = adapter
+
+        id?.let {
+            val selectedPriority = intent.extras?.getInt(PRIORITY_KEY) ?: 0
+            binding.prioritySpinner.setSelection(selectedPriority)
+        }
     }
 
     companion object {
