@@ -53,6 +53,11 @@ class TaskDetailsAdapter(
             doneIcon.setOnClickListener {
                 onDoneClick(task)
             }
+            if (System.currentTimeMillis() > task.date.time) {
+                titleTextView.setTextColor(itemView.context.getColor(R.color.black50))
+                descriptionTextView.setTextColor(itemView.context.getColor(R.color.black50))
+                dateTextView.setTextColor(itemView.context.getColor(R.color.black50))
+            }
         }
     }
 

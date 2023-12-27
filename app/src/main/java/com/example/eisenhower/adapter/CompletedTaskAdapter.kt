@@ -21,7 +21,6 @@ class CompletedTaskAdapter(
     private var mBlockList: MutableList<Block> = mutableListOf()
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.task_item_completed, parent, false)
@@ -58,15 +57,21 @@ class CompletedTaskAdapter(
             deleteIcon.setOnClickListener {
                 onDeleteClick(task)
             }
+            if (System.currentTimeMillis() > task.date.time) {
+                priorityTextView.setTextColor(itemView.context.getColor(R.color.black50))
+                titleTextView.setTextColor(itemView.context.getColor(R.color.black50))
+                descriptionTextView.setTextColor(itemView.context.getColor(R.color.black50))
+                dateTextView.setTextColor(itemView.context.getColor(R.color.black50))
+            }
         }
 
-        private fun getPriorityTitle(task: Task): String{
+        private fun getPriorityTitle(task: Task): String {
             val block = mBlockList.find { block ->
                 block.priority == task.priority
             }
-            if(block != null){
+            if (block != null) {
                 return block.title
-            }else{
+            } else {
                 return ""
             }
         }
