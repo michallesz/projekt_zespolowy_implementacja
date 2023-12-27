@@ -62,6 +62,11 @@ class CompletedTaskAdapter(
                 titleTextView.setTextColor(itemView.context.getColor(R.color.black50))
                 descriptionTextView.setTextColor(itemView.context.getColor(R.color.black50))
                 dateTextView.setTextColor(itemView.context.getColor(R.color.black50))
+            }else{
+                priorityTextView.setTextColor(itemView.context.getColor(R.color.black))
+                titleTextView.setTextColor(itemView.context.getColor(R.color.black))
+                descriptionTextView.setTextColor(itemView.context.getColor(R.color.black))
+                dateTextView.setTextColor(itemView.context.getColor(R.color.black))
             }
         }
 

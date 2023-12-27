@@ -54,6 +54,8 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TitleViewHolder>() {
 
             if (System.currentTimeMillis() > task.date.time) {
                 titleTextView.setTextColor(itemView.context.getColor(R.color.black50))
+            }else{
+                titleTextView.setTextColor(itemView.context.getColor(R.color.black))
             }
         }
     }
