@@ -1,5 +1,7 @@
 package com.example.eisenhower
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.example.eisenhower.databinding.ActivityAddTaskBinding
 import com.example.eisenhower.model.Task
 import com.example.eisenhower.viewmodel.BlockViewModel
 import com.example.eisenhower.viewmodel.TaskViewModel
-import java.util.Calendar
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class AddTaskActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTaskBinding
@@ -80,6 +86,7 @@ class AddTaskActivity : AppCompatActivity() {
                     date = notificationDate
                 )
                 taskViewModel.insert(task)
+                scheduleNotification(task)
                 finish()
             } else {
                 Toast.makeText(this, "Wypełnij wszystkie pola.", Toast.LENGTH_SHORT).show()
@@ -106,6 +113,23 @@ class AddTaskActivity : AppCompatActivity() {
             binding.prioritySpinner.setSelection(selectedPriority)
         }
     }
+
+    private fun scheduleNotification(task: Task) {
+        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+            .setInitialDelay(calculateDelay(task.date), TimeUnit.MILLISECONDS)
+            .setInputData(workDataOf(NotificationWorker.TASK_TITLE_KEY to task.title))
+            .addTag(task.id.toString())
+            .build()
+
+        WorkManager.getInstance(this).enqueue(notificationWorkRequest)
+    }
+
+    private fun calculateDelay(notificationTime: Date): Long {
+        val currentTime = System.currentTimeMillis()
+        return notificationTime.time - currentTime
+    }
+
+
 
     companion object {
         private const val ID_KEY = "id"

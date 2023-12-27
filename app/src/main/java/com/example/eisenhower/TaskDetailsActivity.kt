@@ -1,5 +1,9 @@
 package com.example.eisenhower
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageButton
@@ -11,9 +15,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.WorkManager
 import com.example.eisenhower.adapter.TaskAdapter
 import com.example.eisenhower.adapter.TaskDetailsAdapter
 import com.example.eisenhower.viewmodel.TaskViewModel
+import java.util.*
 
 class TaskDetailsActivity : AppCompatActivity() {
     private lateinit var taskViewModel: TaskViewModel
@@ -52,6 +58,7 @@ class TaskDetailsActivity : AppCompatActivity() {
                     .setPositiveButton("Tak") { dialog, which ->
                         val newTask = task.copy(isDone = true)
                         taskViewModel.update(newTask)
+                        cancelNotification(newTask.id)
                     }
                     .setNegativeButton("Anuluj", null)
                     .show()
@@ -64,6 +71,12 @@ class TaskDetailsActivity : AppCompatActivity() {
             adapter.setTaskList(tasks)
         }
     }
+
+    private fun cancelNotification(taskId: Int) {
+        WorkManager.getInstance(this).cancelAllWorkByTag(taskId.toString())
+    }
+
+
 }
 
 

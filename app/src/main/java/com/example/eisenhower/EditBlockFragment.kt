@@ -1,7 +1,6 @@
 package com.example.eisenhower
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,7 +58,7 @@ class EditBlockFragment : BottomSheetDialogFragment() {
         }
         binding.saveButton.setOnClickListener {
             val title = binding.titleEditText.text.toString()
-            if(title.isNotBlank()){
+            if (title.isNotBlank()) {
                 val newBlock = block!!.copy(
                     title = title,
                     color = selectedColor!!
