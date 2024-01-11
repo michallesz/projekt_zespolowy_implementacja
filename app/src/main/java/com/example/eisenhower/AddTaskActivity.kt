@@ -88,6 +88,7 @@ class AddTaskActivity : AppCompatActivity() {
                 taskViewModel.insert(task)
                 scheduleNotification(task)
                 finish()
+                Toast.makeText(this, "Dodano zadanie.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Wypełnij wszystkie pola.", Toast.LENGTH_SHORT).show()
             }
