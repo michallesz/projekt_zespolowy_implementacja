@@ -1,6 +1,7 @@
 package com.example.eisenhower
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -93,34 +94,85 @@ class MainActivity : AppCompatActivity() {
         }
 
         blockViewModel.allBlocks.observe(this) { blocks ->
-            val block0 = blocks.find { it.priority == 0 }!!
-            val block1 = blocks.find { it.priority == 1 }!!
-            val block2 = blocks.find { it.priority == 2 }!!
-            val block3 = blocks.find { it.priority == 3 }!!
-
-            binding.block0.text = block0.title
-            binding.area0.setBackgroundColor(block0.color)
-            binding.block0.setOnClickListener {
-                startTaskDetailsActivity(block0.title, block0.priority, block0.color)
+//            val block0 = blocks.find { it.priority == 0 }!!
+//            val block1 = blocks.find { it.priority == 1 }!!
+//            val block2 = blocks.find { it.priority == 2 }!!
+//            val block3 = blocks.find { it.priority == 3 }!!
+//
+//            binding.block0.text = block0.title
+//            binding.area0.setBackgroundColor(block0.color)
+//            binding.block0.setOnClickListener {
+//                startTaskDetailsActivity(block0.title, block0.priority, block0.color)
+//            }
+//
+//            binding.block1.text = block1.title
+//            binding.area1.setBackgroundColor(block1.color)
+//            binding.block1.setOnClickListener {
+//                startTaskDetailsActivity(block1.title, block1.priority, block1.color)
+//            }
+//
+//            binding.block2.text = block2.title
+//            binding.area2.setBackgroundColor(block2.color)
+//            binding.block2.setOnClickListener {
+//                startTaskDetailsActivity(block2.title, block2.priority, block2.color)
+//            }
+//
+//            binding.block3.text = block3.title
+//            binding.area3.setBackgroundColor(block3.color)
+//            binding.block3.setOnClickListener {
+//                startTaskDetailsActivity(block3.title, block3.priority, block3.color)
+//            }
+            val block0 = blocks.find { it.priority == 0 }
+            block0?.let { block ->
+                binding.block0.text = block.title
+                binding.area0.setBackgroundColor(block.color)
+                binding.block0.setOnClickListener {
+                    startTaskDetailsActivity(block.title, block.priority, block.color)
+                }
+            } ?: run {
+                binding.block0.text = "Default Title"
+                binding.area0.setBackgroundColor(Color.GRAY)
             }
 
-            binding.block1.text = block1.title
-            binding.area1.setBackgroundColor(block1.color)
-            binding.block1.setOnClickListener {
-                startTaskDetailsActivity(block1.title, block1.priority, block1.color)
+
+            val block1 = blocks.find { it.priority == 1 }
+            block1?.let { block ->
+                binding.block1.text = block.title
+                binding.area1.setBackgroundColor(block.color)
+                binding.block1.setOnClickListener {
+                    startTaskDetailsActivity(block.title, block.priority, block.color)
+                }
+            } ?: run {
+                binding.block1.text = "Default Title"
+                binding.area1.setBackgroundColor(Color.GRAY)
             }
 
-            binding.block2.text = block2.title
-            binding.area2.setBackgroundColor(block2.color)
-            binding.block2.setOnClickListener {
-                startTaskDetailsActivity(block2.title, block2.priority, block2.color)
+
+            val block2 = blocks.find { it.priority == 2 }
+            block2?.let { block ->
+                binding.block2.text = block.title
+                binding.area2.setBackgroundColor(block.color)
+                binding.block2.setOnClickListener {
+                    startTaskDetailsActivity(block.title, block.priority, block.color)
+                }
+            } ?: run {
+                binding.block2.text = "Default Title"
+                binding.area2.setBackgroundColor(Color.GRAY)
             }
 
-            binding.block3.text = block3.title
-            binding.area3.setBackgroundColor(block3.color)
-            binding.block3.setOnClickListener {
-                startTaskDetailsActivity(block3.title, block3.priority, block3.color)
+
+            val block3 = blocks.find { it.priority == 3 }
+            block3?.let { block ->
+                binding.block3.text = block.title
+                binding.area3.setBackgroundColor(block.color)
+                binding.block3.setOnClickListener {
+                    startTaskDetailsActivity(block.title, block.priority, block.color)
+                }
+            } ?: run {
+                binding.block3.text = "Default Title"
+                binding.area3.setBackgroundColor(Color.GRAY)
             }
+
         }
     }
 
