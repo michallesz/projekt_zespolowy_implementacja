@@ -15,10 +15,10 @@ class NotificationWorker(
 ) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
-        val taskTitle = inputData.getString("taskTitle") ?: "Task Reminder"
+        val taskTitle = inputData.getString("taskTitle") ?: "Przypomnienie"
 
         val notification = NotificationCompat.Builder(applicationContext, "TASK_CHANNEL_ID")
-            .setContentTitle("Task Reminder")
+            .setContentTitle("Przypomnienie")
             .setContentText(taskTitle)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
