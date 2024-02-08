@@ -12,6 +12,9 @@ interface TasksDao {
     @Query("SELECT * FROM tasks WHERE isDone = 1 ORDER BY date ASC")
     fun getDoneTasks(): LiveData<List<Task>>
 
+    @Query("DELETE FROM tasks")
+    fun deleteAll();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(task: Task)
 
